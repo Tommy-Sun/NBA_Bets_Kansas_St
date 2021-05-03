@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Better: {{better.name}}{% endblock %}
+
+{% block content %}
+
+{% load index %}
+
+<div class="container py-2">
+    <div class="row">
+         <div class="col">
+             <h1>{{better.name}}</h1>
+         </div>
+         <div class="col-8">
+         </div>
+    </div>
+</div>
+
+<table class="table table-striped table-hover w-75 mx-auto">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">{{better.name}} Western Ranks</th>
+            <th scope="col">Actual Western Ranks</th>
+            <th scope="col">Western Scores</th>
+            <th scope="col">Rank</th>
+            <th scope="col">{{better.name}} Eastern Ranks</th>
+            <th scope="col">Actual Eastern Ranks</th>
+            <th scope="col">Eastern Scores</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for western_rank in western_ranks %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ western_rank }}</td>
+                <td>{{ actual_western_ranks|index:forloop.counter0 }}</td>
+                <th scope="row">{{ western_scores|index:forloop.counter0 }}</th>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ eastern_ranks|index:forloop.counter0 }}</td>
+                <td>{{ actual_eastern_ranks|index:forloop.counter0 }}</td>
+                <th scope="row">{{ eastern_scores|index:forloop.counter0 }}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+            <th scope="col">Total</th>
+            <th scope="col">{{ total_score }}</th>
+            <th scope="col">Western Scores</th>
+            <th scope="col">{{ western_scores|index:-1 }}</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Eastern Scores</th>
+            <th scope="col">{{ eastern_scores|index:-1 }}</th>
+    </tfoot>
+</table>
+
+
+{% include 'website/snippets/reference_to_home.html' %}
+
+{% endblock %}
