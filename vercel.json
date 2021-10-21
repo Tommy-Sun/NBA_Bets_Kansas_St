@@ -2,7 +2,7 @@
     "builds": [{
         "src": "NBA_Bet_Kansas_St/wsgi.py",
         "use": "@ardnt/vercel-python-wsgi",
-        "config": { "maxLambdaSize": "15mb" }
+        "config": { "maxLambdaSize": "35mb" }
     }],
     "routes": [
         {
