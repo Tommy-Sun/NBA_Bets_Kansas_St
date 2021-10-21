@@ -1,0 +1,1 @@
+web: gunicorn NBA_Bet_Kansas_St.wsgi
