@@ -26,7 +26,7 @@ SECRET_KEY = 'y*392#yer6wfgu-qeur7de$8ds7qb(ft*)hp@#mctq-0_au!_q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '192.168.1.11', '127.0.0.1', 'localhost', '.vercel.app']
+ALLOWED_HOSTS = ['0.0.0.0', '192.168.1.11', '127.0.0.1', 'localhost', 'https://nba-bets-kansas-st.herokuapp.com/']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
