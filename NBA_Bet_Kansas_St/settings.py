@@ -25,7 +25,7 @@ SECRET_KEY = 'y*392#yer6wfgu-qeur7de$8ds7qb(ft*)hp@#mctq-0_au!_q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '192.168.1.11', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0', '192.168.1.11', '127.0.0.1', 'localhost', '.vercel.app']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'NBA_Bet_Kansas_St.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    
 }
-
+#'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }         to be used in Databases in development mode
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
