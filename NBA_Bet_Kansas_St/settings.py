@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'NBA_Bet_Kansas_St.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME':  'dcj704mes1mo5d',
+       'HOST': 'ec2-52-201-72-91.compute-1.amazonaws.com',
+       'PORT': 5432,
+       'USER': 'bbqpeckdwzfvub', 
+       'PASSWORD': '3a25da17fe9238b904d915e87e7c6f9254513721f86d481cbb1f54b046bbad2e'
    }  
 }
 

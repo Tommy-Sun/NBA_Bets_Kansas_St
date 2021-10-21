@@ -29,7 +29,7 @@ def getRankOfTeams():
     teams = Teams.objects.first()
     if (None != response):
         standings_data = response["api"]["standings"]
-        if False:
+        if timer.has_already_updated_for_the_day():
             teams.set_data()
             teams.save()
         for count, team_data in enumerate(standings_data):

@@ -1,16 +1,17 @@
 from django.db import models
 
 # Create your models here.
-import time
+from datetime import date
 
 class Timer():
-    seconds = time.time()
-    local_time = time.localtime(seconds)
-    today = [local_time.tm_mday]
-    daySinceLastUpdated = []
+
+    def __init__(self):
+        self.today = date.today()
+        self.daySinceLastUpdated = self.today
 
 
     def has_already_updated_for_the_day(self):
+        self.today = date.today()
         if self.daySinceLastUpdated == self.today:
             return True
         else:
