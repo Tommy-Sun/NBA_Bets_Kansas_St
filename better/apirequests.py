@@ -10,7 +10,7 @@ headers = {
         'x-rapidapi-host': "api-nba-v1.p.rapidapi.com"
     }
 
-teams = Teams(name="Current Teams Data")
+teams = Teams(name="Current Teams Data", data={})
 
 def getRankOfTeams():
     inputdata1 = dict()
@@ -26,10 +26,12 @@ def getRankOfTeams():
     inputdata2["Win Percentage"] = list()
 
     response = fetchStandingData()
-    teams = Teams.objects.first()
+
+    if None != response: 
+        print("Response is not working. Not fetching data.")
     if (None != response):
         standings_data = response["api"]["standings"]
-        if timer.has_already_updated_for_the_day():
+        if True:
             teams.set_data()
             teams.save()
         for count, team_data in enumerate(standings_data):
@@ -55,4 +57,4 @@ def getRankOfTeams():
 
         return df1_western_ranks, df2_eastern_ranks
 
-#timer.has_already_updated_for_the_day() == False
+#timer.has_already_updated_for_the_day() == False  teams = Teams.objects.first()

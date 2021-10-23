@@ -8,6 +8,7 @@ class Timer():
     def __init__(self):
         self.today = date.today()
         self.daySinceLastUpdated = self.today
+        print(f"Hello, the date is {self.today}")
 
 
     def has_already_updated_for_the_day(self):
