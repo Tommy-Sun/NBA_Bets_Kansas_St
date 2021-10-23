@@ -117,7 +117,7 @@ def fetchTeamNames(teamId):
         print(f"Team name did not get fetched properly. {teamId} is the teamId.")
 
 def fetchStandingData():
-    url_teams = "https://api-nba-v1.p.rapidapi.com/standings/standard/2021/"
+    url_teams = "https://api-nba-v1.p.rapidapi.com/standings/standard/2020/"
 
     response_teams = requests.request("GET", url_teams, headers=headers)
 
@@ -129,7 +129,7 @@ def fetchStandingData():
 
 class Teams(models.Model):
     name = models.CharField(max_length=25)
-    data = models.CharField(max_length=600)
+    data = models.CharField(max_length=10000)
 
     def __str__(self):
         return f"{self.name}"

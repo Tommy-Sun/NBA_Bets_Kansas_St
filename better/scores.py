@@ -2,9 +2,11 @@ import pandas as pd
 
 def west_scores(western_ranks, actual_western_teams):
     df_better = pd.Series(western_ranks)
+    print("\n")
     print("Western Better ranks/teams: ")
     print(df_better)
     df_actual = actual_western_teams["Western Teams"]
+    print(f"Actual Western Teams: {df_actual}")
     list_of_scores = []
     for rank_better, team_better in df_better.items():
         for rank_actual, team_actual in df_actual.items():
@@ -21,6 +23,10 @@ def west_scores(western_ranks, actual_western_teams):
 def east_scores(eastern_ranks, actual_eastern_teams):
     df_better = pd.Series(eastern_ranks)
     df_actual = actual_eastern_teams["Eastern Teams"]
+    print("\n")
+    print("Eastern Better ranks/teams: ")
+    print(df_better)
+    print(f"Actual Eastern Teams: {df_actual}")
     list_of_scores = []
     for rank_better, team_better in df_better.items():
         for rank_actual, team_actual in df_actual.items():
@@ -32,4 +38,5 @@ def east_scores(eastern_ranks, actual_eastern_teams):
     print("the number of elements in the east list: " + str(len(list_of_scores)))
     print(list_of_scores)
     print("^These are the EAST scores")
+    print("\n")
     return list_of_scores

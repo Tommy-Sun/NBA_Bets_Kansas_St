@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from timer.models import Timer
 from .models import Teams, fetchStandingData
+from datetime import date
 
 timer = Timer()
 
@@ -10,7 +11,7 @@ headers = {
         'x-rapidapi-host': "api-nba-v1.p.rapidapi.com"
     }
 
-teams = Teams(name="Current Teams Data", data={})
+
 
 def getRankOfTeams():
     inputdata1 = dict()
@@ -25,13 +26,22 @@ def getRankOfTeams():
     inputdata2["Eastern Rank"] = list()
     inputdata2["Win Percentage"] = list()
 
+    if Timer.objects.first() == None:
+        timer = Timer(today=date.today(), daySinceLastUpdated="")
+        timer.save()
+    else:
+        timer = Timer.objects.first()
+
+    if Teams.objects.filter(name="Current Teams Data").first() == None:
+        teams = Teams(name="Current Teams Data", data={})
+    else:
+        teams = Teams.objects.filter(name="Current Teams Data").first()
+
     response = fetchStandingData()
 
-    if None != response: 
-        print("Response is not working. Not fetching data.")
     if (None != response):
         standings_data = response["api"]["standings"]
-        if True:
+        if timer.has_already_updated_for_the_day() == False:
             teams.set_data()
             teams.save()
         for count, team_data in enumerate(standings_data):
@@ -56,5 +66,3 @@ def getRankOfTeams():
         df2_eastern_ranks = df2_eastern_ranks.set_index('Eastern Rank')
 
         return df1_western_ranks, df2_eastern_ranks
-
-#timer.has_already_updated_for_the_day() == False  teams = Teams.objects.first()

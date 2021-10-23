@@ -3,19 +3,23 @@ from django.db import models
 # Create your models here.
 from datetime import date
 
-class Timer():
+class Timer(models.Model):
 
-    def __init__(self):
-        self.today = date.today()
-        self.daySinceLastUpdated = self.today
-        print(f"Hello, the date is {self.today}")
+    today = models.CharField(max_length=50)
+    daySinceLastUpdated = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"Hi! Today is {self.today}."
 
     def has_already_updated_for_the_day(self):
         self.today = date.today()
-        if self.daySinceLastUpdated == self.today:
+        if str(self.daySinceLastUpdated) == str(self.today):
+            super().save()
             return True
         else:
             self.daySinceLastUpdated = self.today
+            super().save()
             return False
+        
+
 
