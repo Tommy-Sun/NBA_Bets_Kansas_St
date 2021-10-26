@@ -135,12 +135,14 @@ class Teams(models.Model):
         return f"{self.name}"
 
     def set_data(self):
-        data = {}
+        data = json.loads(self.data)
+
         response = fetchStandingData()
         if (None != response):
             standings_data = response["api"]["standings"]
             for team_data in standings_data:
-                data[int(team_data["teamId"])] = fetchTeamNames(teamId=team_data["teamId"])
+                if team_data["conference"]["name"] == "west": #to update east teams cache change west to east.
+                    data[int(team_data["teamId"])] = fetchTeamNames(teamId=team_data["teamId"])
         print(data)
         self.data = json.dumps(data)
         super().save()

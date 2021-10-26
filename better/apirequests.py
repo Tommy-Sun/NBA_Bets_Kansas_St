@@ -41,7 +41,6 @@ def getRankOfTeams():
 
     if (None != response):
         standings_data = response["api"]["standings"]
-        print(f"{standings_data}")
         if False:
             teams.set_data()
             teams.save()
