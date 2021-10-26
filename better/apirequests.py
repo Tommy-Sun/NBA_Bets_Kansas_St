@@ -41,7 +41,8 @@ def getRankOfTeams():
 
     if (None != response):
         standings_data = response["api"]["standings"]
-        if timer.has_already_updated_for_the_day() == False:
+        print(f"{standings_data}")
+        if False:
             teams.set_data()
             teams.save()
         for count, team_data in enumerate(standings_data):
@@ -66,3 +67,4 @@ def getRankOfTeams():
         df2_eastern_ranks = df2_eastern_ranks.set_index('Eastern Rank')
 
         return df1_western_ranks, df2_eastern_ranks
+#timer.has_already_updated_for_the_day() == False
