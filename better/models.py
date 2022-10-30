@@ -117,7 +117,7 @@ def fetchTeamNames(teamId):
         print(f"Team name did not get fetched properly. {teamId} is the teamId.")
 
 def fetchStandingData():
-    url_teams = "https://api-nba-v1.p.rapidapi.com/standings/standard/2021/"
+    url_teams = "https://api-nba-v1.p.rapidapi.com/standings/standard/2022/"
 
     response_teams = requests.request("GET", url_teams, headers=headers)
 
