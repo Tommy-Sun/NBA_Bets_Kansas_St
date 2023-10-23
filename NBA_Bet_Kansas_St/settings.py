@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,14 +83,10 @@ WSGI_APPLICATION = 'NBA_Bet_Kansas_St.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME':  'dcj704mes1mo5d',
-       'HOST': 'ec2-52-201-72-91.compute-1.amazonaws.com',
-       'PORT': 5432,
-       'USER': 'bbqpeckdwzfvub', 
-       'PASSWORD': '3a25da17fe9238b904d915e87e7c6f9254513721f86d481cbb1f54b046bbad2e'
-   }  
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        conn_max_age=600
 }
 
 
