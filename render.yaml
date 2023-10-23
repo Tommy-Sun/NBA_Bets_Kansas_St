@@ -1,14 +1,14 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: NBA_BET_KANSAS_ST
+    databaseName: NBA_BET_KANSAS_ST
+    user: NBA_BET_KANSAS_ST
 
 services:
   - type: web
-    name: mysite
+    name: NBA_BET_KANSAS_ST
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn mysite.wsgi:application"
+    startCommand: "gunicorn NBA_BET_KANSAS_ST.wsgi:application"
     envVars:
       - key: POETRY_VERSION
         value: 1.5.1
